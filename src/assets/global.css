@@ -1,0 +1,62 @@
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 70%;
+}
+
+img {
+  width: 25%;
+  height: 25%;
+}
+
+h1 {
+  color: chocolate;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1em;
+}
+
+label,
+select,
+option {
+  color:#595260;
+}
+
+form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.degree-input,
+.selectedTemp-input {
+  margin: 8px auto;
+}
+
+input {
+  height: 1.5em;
+}
+
+select {
+  height: 2em;
+  width: 9.5em;
+}
+
+button {
+  font-size: 1.1rem;
+  background-color: chocolate;
+  color: antiquewhite;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  height: 2.5rem;
+  width: 20%;
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  color: chocolate;
+  background-color: antiquewhite;
+  cursor: pointer;
+}

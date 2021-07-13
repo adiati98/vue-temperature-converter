@@ -1,12 +1,16 @@
 <template>
 	<form @submit.prevent="submitForm">
+		<div class="degree-input">			
 		<label for="degree">Degree: </label>
 		<input type="number" v-model.number="degree" />
+		</div>
+		<div class="selectedTemp-input">			
 		<label for="selectedTemp">Temperature: </label>
 		<select id="selectedTemp" name="selectedTemp" v-model="selectedTemp" required>
 			<option value="celcius">Celcius</option>
 			<option value="fahrenheit">Fahrenheit</option>
 		</select>
+			</div>	
 
 		<button>{{ btnText }}</button>
 	</form>
