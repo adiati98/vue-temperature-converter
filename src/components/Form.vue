@@ -1,16 +1,21 @@
 <template>
 	<form @submit.prevent="submitForm">
-		<div class="degree-input">			
-		<label for="degree">Degree <span>*</span>: </label>
-		<input type="number" v-model.number="degree" />
+		<div class="degree-input">
+			<label for="degree">Degree <span>*</span>: </label>
+			<input type="number" v-model.number="degree" />
 		</div>
-		<div class="selectedTemp-input">			
-		<label for="selectedTemp">Temperature: </label>
-		<select id="selectedTemp" name="selectedTemp" v-model="selectedTemp" required>
-			<option value="celcius">Celcius</option>
-			<option value="fahrenheit">Fahrenheit</option>
-		</select>
-			</div>	
+		<div class="selectedTemp-input">
+			<label for="selectedTemp">Temperature: </label>
+			<select
+				id="selectedTemp"
+				name="selectedTemp"
+				v-model="selectedTemp"
+				required
+			>
+				<option value="celcius">Celcius</option>
+				<option value="fahrenheit">Fahrenheit</option>
+			</select>
+		</div>
 
 		<button>{{ btnText }}</button>
 	</form>
@@ -29,7 +34,7 @@ export default {
 			selectedTemp: 'celcius',
 			result: null,
 			btnText: 'Convert',
-			message: ''
+			message: '',
 		}
 	},
 	methods: {
@@ -44,7 +49,7 @@ export default {
 				// reset form
 			} else if (this.result !== null) {
 				this.clearForm()
-			} 
+			}
 		},
 		convertion() {
 			// convert Celcius to Fahrenheit
@@ -55,11 +60,17 @@ export default {
 
 			// convert based on selected temperature
 			if (this.selectedTemp === 'celcius') {
-				this.result = `${Math.round(parseFloat(toFahrenheit))} Fahrenheit`
-				this.message = 'Click reset for new convertion'
+				this.message = 'Converting...'
+				setTimeout(() => {
+					this.result = `${Math.round(parseFloat(toFahrenheit))} Fahrenheit`
+					this.message = 'Click reset for new convertion'
+				}, 2500)
 			} else if (this.selectedTemp === 'fahrenheit') {
-				this.result = `${Math.round(parseFloat(toCelcius))} Celcius`
-				this.message = 'Click reset for new convertion'
+				this.message = 'Converting...'
+				setTimeout(() => {
+					this.result = `${Math.round(parseFloat(toCelcius))} Celcius`
+					this.message = 'Click reset for new convertion'
+				}, 2500)
 			}
 		},
 		// clear the inputs after submit
