@@ -1,12 +1,13 @@
 <template>
 <section id="show-result">
-  <p>{{ result }}</p>
+  <p class="result">{{ result }}</p>
+  <p class="message">{{ message }}</p>
 </section>
 </template>
 
 <script>
 export default {
-  props: [ 'result' ]
+  props: [ 'result', 'message' ]
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
 	<form @submit.prevent="submitForm">
 		<div class="degree-input">			
-		<label for="degree">Degree: </label>
+		<label for="degree">Degree <span>*</span>: </label>
 		<input type="number" v-model.number="degree" />
 		</div>
 		<div class="selectedTemp-input">			
@@ -15,7 +15,7 @@
 		<button>{{ btnText }}</button>
 	</form>
 
-	<ShowResult :result="result" />
+	<ShowResult :result="result" :message="message" />
 </template>
 
 <script>
@@ -29,13 +29,14 @@ export default {
 			selectedTemp: 'celcius',
 			result: null,
 			btnText: 'Convert',
+			message: ''
 		}
 	},
 	methods: {
 		submitForm(e) {
 			// degree field has to be filled
 			if (this.degree === null && this.btnText === 'Convert') {
-				this.result = 'Please enter required field'
+				this.message = '*Please enter required field'
 				// convert when degree input is filled and result is null
 			} else if (this.result === null || this.degree !== null) {
 				this.convertion()
@@ -55,8 +56,10 @@ export default {
 			// convert based on selected temperature
 			if (this.selectedTemp === 'celcius') {
 				this.result = `${Math.round(parseFloat(toFahrenheit))} Fahrenheit`
+				this.message = 'Click reset for new convertion'
 			} else if (this.selectedTemp === 'fahrenheit') {
 				this.result = `${Math.round(parseFloat(toCelcius))} Celcius`
+				this.message = 'Click reset for new convertion'
 			}
 		},
 		// clear the inputs after submit
@@ -68,6 +71,7 @@ export default {
 		// reset form
 		clearForm() {
 			this.result = null
+			this.message = ''
 			this.btnText = 'Convert'
 		},
 	},
